@@ -312,7 +312,7 @@ def q18():
 
 
 def q19():
-    # 1 Jan 1900 = Monday
+    # 1 Jan 1900 = Monday =>
     days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     days_sum = [0]
     for i in days:
@@ -326,8 +326,10 @@ def q19():
         return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
     count = 0
-    day1 = 1 % 7
+    # day 1 of 1901 is Tuesday
+    day1 = 2 % 7
     for i in range(100):
+        print(1901+i)
         if isleap(1901+i):
             count += sum(map(lambda x: (x+day1) % 7 == 0, days_leap_sum[:-1]))
             day1 = (day1 + days_leap_sum[-1]) % 7
@@ -338,4 +340,9 @@ def q19():
     print(count)
 
 
-q19()
+def q20():
+    # easy in python
+    print(sum(map(int, list(str(factorial(100))))))
+
+
+q20()
