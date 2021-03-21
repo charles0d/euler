@@ -1,23 +1,7 @@
 
 
 from num2words import num2words
-
-
-def isprime(x: int):
-    for i in range(2, int(x**0.5) + 1):
-        if x % i == 0:
-            return False
-    return True
-
-
-def all_primes(N):
-    res = []
-    n = 2
-    while n < N:
-        if isprime(n):
-            res.append(n)
-        n += 1
-    return res
+from helper import *
 
 
 def q11():
@@ -67,27 +51,8 @@ def q11():
 def q12():
     primes = all_primes(50000)
 
-    def prime_factors(n):
-        current = 0
-        result = []
-        exponent = 0
-        while n >= 1:
-            p = primes[current]
-            if n % p == 0:
-                exponent += 1
-                n = n / p
-            else:
-                if exponent > 0:
-                    result.append(exponent)
-                exponent = 0
-
-                current += 1
-
-                if n == 1:
-                    return result
-
     def divisors(n):
-        primes = prime_factors(n)
+        primes = prime_factors(n, primes_list)
         res = 1
         for a in primes:
             res *= a+1
@@ -343,6 +308,3 @@ def q19():
 def q20():
     # easy in python
     print(sum(map(int, list(str(factorial(100))))))
-
-
-q20()
